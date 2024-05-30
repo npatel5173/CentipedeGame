@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Blaster : MonoBehaviour
 {
-    private Rigidbody2D rigidbody;
+    private new Rigidbody2D rigidbody;
     private Vector2 direction;
     public float speed = 20f;
 
