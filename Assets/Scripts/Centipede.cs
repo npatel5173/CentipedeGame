@@ -30,7 +30,24 @@ public class Centipede : MonoBehaviour
             //ternary statement: if i == 0, then headSprite, else bodySprite
             //used to ensure the correct image for headSprite appears
             segment.spriteRenderer.sprite = i == 0 ? headSprite : bodySprite;
+            //assign centipede
+            segment.centipede  = this;
             segments.Add(segment);
+        }
+
+        for (int i = 0; i < segments.Count; i++){
+            CentipedeSegment segment = segments[i];
+            segment.ahead = GetSegmentAt(i-1);
+            segment.behind = GetSegmentAt(i+1);
+        }
+    }
+
+    private CentipedeSegment GetSegmentAt(int index){
+        //check if index is within bounds so we can access the list
+        if(index >= 0 && index < segments.Count){
+            return segments[index];
+        } else{
+            return null;
         }
     }
 
